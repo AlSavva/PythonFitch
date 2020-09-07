@@ -1,3 +1,14 @@
+def gen_list(n: int, m: int, l: int):
+    """Функция генерирует список заданной длинны из случайных целых чисел
+    n-нижняя граница для ГСЧ, m-верхняя граница, l-длинна списка"""
+    from random import randint
+
+    lst = []
+    for i in range(l):
+        lst.append(randint(n, m))
+    return lst
+
+
 def binary_search(list, item):
     """Функция для осуществления метода бинарного поиска
     в сортированных спискахю Скорость исполнения О(log_n)"""
@@ -39,5 +50,20 @@ def chois_sort(list):
     return new_list
 
 
-my_list = list(map(int, input().split()))
-print(chois_sort(my_list))
+def q_sort(list):
+    """Функция реализует алгоритм быстрой сортировкию Скорость выполнения
+    O(n*log_n)"""
+    if len(list) <= 2:
+        return list
+    else:
+        check = list[0]
+        right = [i for i in list[1:] if i > check]
+        left = [i for i in list[1:] if i <= check]
+        return q_sort(left) + [check] + q_sort(right)
+
+
+my_list = gen_list(10, 15, 5)
+a=chois_sort(my_list[:])
+print(a)
+b=q_sort(my_list)
+print(b)
