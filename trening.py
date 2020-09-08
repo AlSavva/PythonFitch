@@ -33,9 +33,20 @@ def my_numbers(n):
         return str(my_numbers(n - 1)) + ' ' + str(n)
 
 
+def my_int(a, b):
+    if a > b:
+        if a == b:
+            return str(b)
+        return str(a) + ' ' + str(my_int(a - 1, b))
+    else:
+        if a == b:
+            return str(a)
+        return str(a) + ' ' + str(my_int(a + 1, b))
+
+
 # ml = gen_list(4, 85, 10)
 # print(ml)
 # print(my_sum(ml))
 # print(my_len(ml))
 # print(my_maxlst(ml))
-print(my_numbers(6))
+print(my_int(30, 20))
