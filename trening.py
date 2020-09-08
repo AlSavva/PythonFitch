@@ -88,11 +88,32 @@ def pow_2real(n):
     return 'no'
 
 
+# Дано натуральное число n>1. Проверьте, является ли оно простым. Программа
+# должна вывести слово YES, если число простое и NO, если число составное.
+# Алгоритм должен иметь сложность O(logn).
+# Указание. Понятно, что задача сама по себе нерекурсивна, т.к. проверка
+# числа n на простоту никак не сводится к проверке на простоту меньших чисел.
+# Поэтому нужно сделать еще один параметр рекурсии: делитель числа,
+# и именно по этому параметру и делать рекурсию.
+def prime_ornot(n,div=2):
+    if n<2:
+        return 'no'
+    elif n==2:
+        return 'yes'
+    elif n%div==0:
+        return 'no'
+    elif div<n//2:
+        return prime_ornot(n,div+1)
+    else:
+        return 'yes'
+
+
+
 # ml = gen_list(4, 85, 10)
 # print(ml)
 # print(my_sum(ml))
 # print(my_len(ml))
 # print(my_maxlst(ml))
-# my_list=list(range(2,100,2))
-# print([(i,pow_2real(i)) for i in my_list])
-print(pow_2real(16))
+my_list=list(range(1,100))
+print([(i,prime_ornot(i)) for i in my_list])
+print(prime_ornot(17))
