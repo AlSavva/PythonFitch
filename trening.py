@@ -26,6 +26,7 @@ def my_maxlst(list):
     return sub_max if sub_max > list[0] else list[0]
 
 
+# Дано натуральное число n. Выведите все числа от 1 до n.
 def my_numbers(n):
     if n == 1:
         return n
@@ -33,6 +34,9 @@ def my_numbers(n):
         return str(my_numbers(n - 1)) + ' ' + str(n)
 
 
+# Даны два целых числа A и В (каждое в отдельной строке). Выведите все числа
+# от A до B включительно, в порядке возрастания, если A < B, или в порядке
+# убывания в противном случае.
 def my_int(a, b):
     if a > b:
         if a == b:
@@ -44,9 +48,19 @@ def my_int(a, b):
         return str(a) + ' ' + str(my_int(a + 1, b))
 
 
+
+# Дано натуральное число N. Вычислите сумму его цифр.
+# При решении этой задачи нельзя использовать строки, списки, массивы
+# (ну и циклы, разумеется).
+def sum_num(n):
+    if n//10<1:
+        return n%10
+    return sum_num(n//10)+n%10
+
+
 # ml = gen_list(4, 85, 10)
 # print(ml)
 # print(my_sum(ml))
 # print(my_len(ml))
 # print(my_maxlst(ml))
-print(my_int(30, 20))
+print(sum_num(512))
