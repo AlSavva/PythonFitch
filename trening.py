@@ -84,7 +84,7 @@ def pow_2real(n):
     if n % 2 == 0:
         if n // 2 == 1:
             return 'yes'
-        return pow_2real(n//2)
+        return pow_2real(n // 2)
     return 'no'
 
 
@@ -95,18 +95,32 @@ def pow_2real(n):
 # числа n на простоту никак не сводится к проверке на простоту меньших чисел.
 # Поэтому нужно сделать еще один параметр рекурсии: делитель числа,
 # и именно по этому параметру и делать рекурсию.
-def prime_ornot(n,div=2):
-    if n<2:
+def prime_ornot(n, div=2):
+    if n < 2:
         return 'no'
-    elif n==2:
+    elif n == 2:
         return 'yes'
-    elif n%div==0:
+    elif n % div == 0:
         return 'no'
-    elif div<n//2:
-        return prime_ornot(n,div+1)
+    elif div < n // 2:
+        return prime_ornot(n, div + 1)
     else:
         return 'yes'
 
+
+# Решето Эратосфена - функция возвращает список из простых чисел до заданного
+# числа n
+def erat(n):
+    sieve = [i for i in range(n)]
+    sieve[1] = 0
+    for i in range(2, n):
+        if sieve[i] != 0:
+            j = i * 2
+            while j < n:
+                sieve[j] = 0
+                j += i
+    res = [i for i in sieve if i != 0]
+    return res
 
 
 # ml = gen_list(4, 85, 10)
@@ -114,6 +128,7 @@ def prime_ornot(n,div=2):
 # print(my_sum(ml))
 # print(my_len(ml))
 # print(my_maxlst(ml))
-my_list=list(range(1,100))
-print([(i,prime_ornot(i)) for i in my_list])
-print(prime_ornot(17))
+# my_list=list(range(1,100))
+# print([(i,prime_ornot(i)) for i in my_list])
+# print(prime_ornot(17))
+print(erat(100))
