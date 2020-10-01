@@ -130,7 +130,14 @@ def binary(num):
         num = num // 2
     return s
 
-
+def multinary(num, m):
+    """Функция выводит представление десятичного числа(num)
+    в системе исчисления(m) 0 < m <= 10"""
+    s = ''
+    while num > 0:
+        s = str(num % m) + s
+        num = num // m
+    return s
 
 # ml = gen_list(4, 85, 10)
 # print(ml)
@@ -140,4 +147,4 @@ def binary(num):
 # my_list=list(range(1,100))
 # print([(i,prime_ornot(i)) for i in my_list])
 # print(prime_ornot(17))
-print(binary(100))
+print(multinary(100, 5))
