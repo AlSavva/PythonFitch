@@ -122,6 +122,15 @@ def erat(n):
     res = [i for i in sieve if i != 0]
     return res
 
+def binary(num):
+    """Функция выводит представление десятичного числа в двоичной системе"""
+    s = ''
+    while num > 0:
+        s = str(num % 2) + s
+        num = num // 2
+    return s
+
+
 
 # ml = gen_list(4, 85, 10)
 # print(ml)
@@ -131,4 +140,4 @@ def erat(n):
 # my_list=list(range(1,100))
 # print([(i,prime_ornot(i)) for i in my_list])
 # print(prime_ornot(17))
-print(erat(100))
+print(binary(100))
