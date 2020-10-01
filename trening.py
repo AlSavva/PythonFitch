@@ -127,7 +127,7 @@ def binary(num):
     s = ''
     while num > 0:
         s = str(num % 2) + s
-        num = num // 2
+        num //= 2
     return s
 
 def multinary(num, m):
@@ -136,7 +136,7 @@ def multinary(num, m):
     s = ''
     while num > 0:
         s = str(num % m) + s
-        num = num // m
+        num //= m
     return s
 
 # ml = gen_list(4, 85, 10)
@@ -147,4 +147,4 @@ def multinary(num, m):
 # my_list=list(range(1,100))
 # print([(i,prime_ornot(i)) for i in my_list])
 # print(prime_ornot(17))
-print(multinary(100, 5))
+print(multinary(255, 2))
