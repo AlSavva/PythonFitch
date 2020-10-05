@@ -139,6 +139,23 @@ def multinary(num, m):
         num //= m
     return s
 
+# Удаление элемента списка во время его итерирования:
+
+mylist = gen_list(1,8,10)
+print(mylist)
+for el in mylist[:]:
+    mylist.remove(el)
+print(mylist)
+
+# Или:
+mylist1 = gen_list(1,8,10)
+print(mylist1)
+for index, el in enumerate(mylist1[:]):
+    mylist1.remove(el)
+print(mylist1)
+
+
+
 # ml = gen_list(4, 85, 10)
 # print(ml)
 # print(my_sum(ml))
@@ -147,4 +164,4 @@ def multinary(num, m):
 # my_list=list(range(1,100))
 # print([(i,prime_ornot(i)) for i in my_list])
 # print(prime_ornot(17))
-print(multinary(255, 2))
+
