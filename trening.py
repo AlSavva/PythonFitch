@@ -154,6 +154,48 @@ for index, el in enumerate(mylist1[:]):
     mylist1.remove(el)
 print(mylist1)
 
+# Крестики-нолики где "Х" побеждает с первой попытки.
+# Вариант неверный:
+
+row = [''] * 3
+board = [row] * 3
+print(board)
+board[0][0] = 'X'
+print(board)
+
+# Вариант верный:
+
+board = [[''] * 3 for i in range(3)]
+print(board)
+board[0][0] = 'X'
+print(board)
+
+# Разница при ссылках на объекты:
+
+a = [1, 2, 3, 4]
+b = a
+a = a + [6, 7, 8]
+print(a, b)
+a = [1, 2, 3, 4]
+b = a
+a += [6, 7, 8]
+print(a, b)
+
+# Сохранить только уникальные значения списка:
+
+a = gen_list(1, 4, 10)
+print(a)
+a = list(set(a))
+print(a)
+
+# Как сделать ключём словаря изменяемый объект:
+
+set_x = [1, 2, 3]
+lst_x = [4, 5, 6]
+dict_x = {frozenset(set_x): lst_x}
+print(dict_x)
+dict_y = {tuple(lst_x): set_x}
+print((dict_y))
 
 
 # ml = gen_list(4, 85, 10)
