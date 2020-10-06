@@ -5,7 +5,6 @@ def gen_list(n, m, l):
     return [randint(n, m) for _ in range(l)]
 
 
-
 def binary_search(list, item):
     """Функция для осуществления метода бинарного поиска
     в сортированных спискахю Скорость исполнения О(log_n)"""
@@ -58,6 +57,7 @@ def q_sort(list):
         left = [i for i in list[1:] if i <= check]
         return q_sort(left) + [check] + q_sort(right)
 
+
 def my_decompose(lst):
     """Функция для разкладывания положительных и отрицательных элементов
     массива lst в два разных массива"""
@@ -70,6 +70,8 @@ def my_decompose(lst):
             ls_negative.append(i)
     return ls_positive, ls_negative
     # Худший вариант:
+
+
 #     ls_positive = [i for i in lst if i > 0]
 #     ls_negative = [i for i in lst if i < 0]
 #     т.к. в данном алгоритме требуется два прохода по списку.
@@ -85,13 +87,78 @@ def my_insert(num, pos, lst):
         i -= 1
     lst[pos] = num
     return lst
+
+
 # Аналогичный результат можно получить в результате выполнения следующего
 # короткого кода:
 # lst_new = lst[:pos] + [num] + lst[pos:]
 # однако реализация данного кода требует в 2 раза больше памятиб т.к.
 # создается новый массив
 
+def my_matrix(rows, cols):
+    """Функция генерирует матрицу размером row x col из произвольных чисел от
+    1 до 10"""
+    from random import randint
+    matrix = [[randint(1, 10) for _ in range(cols)] for _ in range(rows)]
+    for line in matrix:
+        for item in line:
+            print(f'{item:>4}', end='')
+        print()
+    return matrix
 
-my_list = gen_list(-50, 50, 20)
-print(my_list)
-print(my_insert(1000, 13, my_list))
+
+def matrix_sum(matrix):
+    """Функция выводит сумму по столбцам и по строкам матрицы."""
+    sum_col = [0] * len(matrix[0])
+    for rows in matrix:
+        sum_row = 0
+        for i, item in enumerate(rows):
+            sum_row += item
+            sum_col[i] += item
+            print(f'{item:>4}', end='')
+        print(f'    | {sum_row}')
+    print('-' * (len(matrix) * 6))
+    for s in sum_col:
+        print(f'{s:>4}', end='')
+
+
+def sqmatrix_diag_change(matrix):
+    """Функция меняет значения главной и побочной диагонали квадратной
+    матрицы"""
+    size = len(matrix)
+    for i in range(size):
+        for j in range(size):
+            if i == j:
+                spam = matrix[i][j]
+                matrix[i][j] = matrix[i][size - 1 - j]
+                matrix[i][size - 1 - j] = spam
+    for line in matrix:
+        for item in line:
+            print(f'{item:>4}', end='')
+        print()
+    return matrix
+
+
+def matrix_diag_change(matrix):
+    """Функция меняет значения главной и побочной диагонали квадратной
+    матрицы"""
+    size = len(matrix)
+    for i in range(size):
+        for j in range(size):
+            if i == j:
+                spam = matrix[i][j]
+                matrix[i][j] = matrix[i][size - 1 - j]
+                matrix[i][size - 1 - j] = spam
+    for line in matrix:
+        for item in line:
+            print(f'{item:>4}', end='')
+        print()
+    return matrix
+
+
+# my_list = gen_list(-50, 50, 20)
+# print(my_list)
+# print(my_insert(1000, 13, my_list))
+a = my_matrix(5, 5)
+print()
+matrix_diag_change(a)
