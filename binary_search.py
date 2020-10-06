@@ -1,12 +1,9 @@
-def gen_list(n: int, m: int, l: int):
-    """Функция генерирует список заданной длинны из случайных целых чисел
-    n-нижняя граница для ГСЧ, m-верхняя граница, l-длинна списка"""
+def gen_list(n, m, l):
+    """Функция генерирует список заданной длинны l из случайных целых чисел в
+    диапазоне от n до m."""
     from random import randint
+    return [randint(n, m) for _ in range(l)]
 
-    lst = []
-    for i in range(l):
-        lst.append(randint(n, m))
-    return lst
 
 
 def binary_search(list, item):
@@ -61,9 +58,40 @@ def q_sort(list):
         left = [i for i in list[1:] if i <= check]
         return q_sort(left) + [check] + q_sort(right)
 
+def my_decompose(lst):
+    """Функция для разкладывания положительных и отрицательных элементов
+    массива lst в два разных массива"""
+    ls_positive = []
+    ls_negative = []
+    for i in lst:
+        if i > 0:
+            ls_positive.append(i)
+        elif i < 0:
+            ls_negative.append(i)
+    return ls_positive, ls_negative
+    # Худший вариант:
+#     ls_positive = [i for i in lst if i > 0]
+#     ls_negative = [i for i in lst if i < 0]
+#     т.к. в данном алгоритме требуется два прохода по списку.
 
-my_list = gen_list(10, 15, 5)
-a=chois_sort(my_list[:])
-print(a)
-b=q_sort(my_list)
-print(b)
+
+def my_insert(num, pos, lst):
+    """Функция вставляет элемент num на позицию pos в массив lst(полная анология
+    работы функции insert)"""
+    lst.append(None)
+    i = len(lst) - 1
+    while i > pos:
+        lst[i], lst[i - 1] = lst[i - 1], lst[i]
+        i -= 1
+    lst[pos] = num
+    return lst
+# Аналогичный результат можно получить в результате выполнения следующего
+# короткого кода:
+# lst_new = lst[:pos] + [num] + lst[pos:]
+# однако реализация данного кода требует в 2 раза больше памятиб т.к.
+# создается новый массив
+
+
+my_list = gen_list(-50, 50, 20)
+print(my_list)
+print(my_insert(1000, 13, my_list))

@@ -1,10 +1,8 @@
 def gen_list(n, m, l):
-    """Функция генерирует список заданной длинны из случайных целых чисел"""
+    """Функция генерирует список заданной длинны l из случайных целых чисел в
+    диапазоне от n до m."""
     from random import randint
-    lst = []
-    for i in range(l):
-        lst.append(randint(n, m))
-    return lst
+    return [randint(n, m) for _ in range(l)]
 
 
 def my_sum(list):
